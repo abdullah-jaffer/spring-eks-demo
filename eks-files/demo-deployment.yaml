@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  namespace: eks-demo-app
+  labels:
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: demo
+          image: your-account-id.dkr.ecr.us-east-1.amazonaws.com/main:version-1
+          ports:
+            - containerPort: 80
